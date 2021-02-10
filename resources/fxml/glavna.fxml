@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kuhar.GlavnaController">
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -21,24 +21,7 @@
       </VBox>
    </right>
    <center>
-      <HBox prefHeight="200.0" prefWidth="329.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="TOP_CENTER" minHeight="-Infinity">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="150.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/sataras.jpg" />
-                     </image></ImageView>
-                  <Label text="Sataras" />
-               </children>
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-         </children>
+      <HBox fx:id="prikazRecepta" prefHeight="200.0" prefWidth="329.0" BorderPane.alignment="CENTER">
       </HBox>
    </center>
 </BorderPane>
