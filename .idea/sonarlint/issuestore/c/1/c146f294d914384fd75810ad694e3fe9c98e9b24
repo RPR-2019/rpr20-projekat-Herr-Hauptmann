@@ -1,0 +1,8 @@
+
+[
+java:S1144"9Remove this unused private "ubaciPrikazeRecepata" method.(²·˜ùøÿÿÿÿ8ıê™ƒş.
+R
+java:S1128	"5Remove this unused import 'javafx.scene.layout.HBox'.(äê…8°çƒş.
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•‘İŸüÿÿÿÿ8ıê™ƒş.
+]	java:S1257"<This block of commented-out lines of code should be removed.(è Î­üÿÿÿÿ8ºÛ–„ş.

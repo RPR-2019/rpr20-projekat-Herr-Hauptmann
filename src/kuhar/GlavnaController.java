@@ -18,7 +18,7 @@ public class GlavnaController implements Initializable {
     public TilePane sadrzaj;
     public ScrollPane scrolpane;
 
-    public Korisnik korisnik = null;
+    public static Korisnik korisnik = null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -38,8 +38,10 @@ public class GlavnaController implements Initializable {
     }
 
     private void obradiLogin() {
-        if (korisnik != null)
-            System.out.println("Logovan");
+        if (korisnik == null)
+            System.out.println("Nije logovan");
+        else
+            System.out.println("Logovan je: " + korisnik.getIme());
     }
 
 }
