@@ -5,6 +5,8 @@ import kuhar.modeli.Korisnik;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class KuharDAO {
@@ -119,5 +121,12 @@ public class KuharDAO {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List<Korisnik> korisnici()
+    {
+        ArrayList<Korisnik> korisnici = new ArrayList<>();
+
+        return korisnici;
     }
 }

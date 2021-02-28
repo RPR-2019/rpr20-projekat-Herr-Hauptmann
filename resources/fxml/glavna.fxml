@@ -61,7 +61,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="adminBtn" mnemonicParsing="false" text="Admin konzola">
+            <Button fx:id="adminBtn" mnemonicParsing="false" onAction="#otvoriAdminKonzolu" text="Admin konzola">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
