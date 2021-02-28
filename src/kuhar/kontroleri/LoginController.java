@@ -1,4 +1,4 @@
-package kuhar;
+package kuhar.kontroleri;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -6,6 +6,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import kuhar.KuharDAO;
+import kuhar.modeli.Korisnik;
 
 public class LoginController {
     public PasswordField passwordField;

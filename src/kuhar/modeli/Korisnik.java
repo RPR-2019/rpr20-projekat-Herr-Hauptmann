@@ -1,14 +1,16 @@
-package kuhar;
+package kuhar.modeli;
 
 public class Korisnik {
     private int id;
     private String ime;
     private String username;
+    private boolean admin;
 
-    public Korisnik(int id, String ime, String username) {
+    public Korisnik(int id, String ime, String username, boolean admin) {
         this.id = id;
         this.ime = ime;
         this.username = username;
+        this.admin = admin;
     }
 
     public int getId() {
@@ -33,5 +35,13 @@ public class Korisnik {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

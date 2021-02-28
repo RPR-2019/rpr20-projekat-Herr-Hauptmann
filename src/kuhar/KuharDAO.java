@@ -1,5 +1,7 @@
 package kuhar;
 
+import kuhar.modeli.Korisnik;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.*;
@@ -45,7 +47,7 @@ public class KuharDAO {
 
         try {
             korisnikUpit = conn.prepareStatement("SELECT * FROM korisnici WHERE username=? AND password=?");
-            dodajKorisnikaUpit = conn.prepareStatement("INSERT into korisnici VALUES(?,?,?,?)");
+            dodajKorisnikaUpit = conn.prepareStatement("INSERT into korisnici VALUES(?,?,?,?,?)");
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
@@ -91,10 +93,11 @@ public class KuharDAO {
     public void dodajKorisnika(String username)
     {
         try{
-            dodajKorisnikaUpit.setString(1,"Test");
-            dodajKorisnikaUpit.setString(2,username);
-            dodajKorisnikaUpit.setString(3,"Test");
-            dodajKorisnikaUpit.setInt(4, 2);
+            dodajKorisnikaUpit.setInt(1, 2);
+            dodajKorisnikaUpit.setString(2,"Test");
+            dodajKorisnikaUpit.setString(3,username);
+            dodajKorisnikaUpit.setString(4,"Test");
+            dodajKorisnikaUpit.setInt(5, 0);
             dodajKorisnikaUpit.executeUpdate();
         }
         catch (SQLException e) {
@@ -111,7 +114,7 @@ public class KuharDAO {
             {
                 return null;
             }
-            return new Korisnik(rs.getInt(4), rs.getString(1), rs.getString(2));
+            return new Korisnik(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBoolean(5));
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

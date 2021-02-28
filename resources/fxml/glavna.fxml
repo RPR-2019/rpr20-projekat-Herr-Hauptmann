@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kuhar.GlavnaController">
+<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kuhar.kontroleri.GlavnaController">
    <center>
       <ScrollPane fx:id="scrolpane" BorderPane.alignment="CENTER">
          <content>
@@ -51,11 +51,34 @@
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#otvoriLogin" text="Login">
+            <Button fx:id="dodajReceptBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Dodaj recept">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="urediReceptBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Uredi recept">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="adminBtn" mnemonicParsing="false" text="Admin konzola">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="logoutBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logout" text="Log out">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="loginBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#otvoriLogin" text="Log in">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin></Button>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
       </VBox>
    </right>
 </BorderPane>
