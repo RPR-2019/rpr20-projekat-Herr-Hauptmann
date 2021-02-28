@@ -8,6 +8,15 @@ import java.util.Scanner;
 public class KuharDAO {
     private static KuharDAO instance;
     private Connection conn;
+    private Korisnik user;
+
+    public Korisnik getUser() {
+        return user;
+    }
+
+    public void setUser(Korisnik user) {
+        this.user = user;
+    }
 
     private PreparedStatement testniUpit, korisnikUpit, dodajKorisnikaUpit;
 
@@ -40,8 +49,6 @@ public class KuharDAO {
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-
-
     }
 
     public static void removeInstance() {

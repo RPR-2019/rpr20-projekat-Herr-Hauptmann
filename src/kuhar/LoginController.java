@@ -34,7 +34,7 @@ public class LoginController {
             usernameField.clear();
         }
         else {
-            GlavnaController.korisnik = korisnik;
+            dao.setUser(korisnik);
             Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.close();
         }

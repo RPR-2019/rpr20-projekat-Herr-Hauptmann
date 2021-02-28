@@ -13,6 +13,8 @@
       <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
     </CLASSES>
     <JAVADOC />
     <NATIVE>
@@ -22,8 +24,11 @@
       <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
     </NATIVE>
     <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" />
@@ -48,6 +53,10 @@
     <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
     <jarDirectory url="file://$PROJECT_DIR$/../../../../../Program Files/Java/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />

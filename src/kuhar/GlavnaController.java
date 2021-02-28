@@ -18,7 +18,12 @@ public class GlavnaController implements Initializable {
     public TilePane sadrzaj;
     public ScrollPane scrolpane;
 
-    public static Korisnik korisnik = null;
+    private KuharDAO dao;
+
+    public GlavnaController()
+    {
+        dao = KuharDAO.getInstance();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -38,10 +43,10 @@ public class GlavnaController implements Initializable {
     }
 
     private void obradiLogin() {
-        if (korisnik == null)
+        if (dao.getUser() == null)
             System.out.println("Nije logovan");
         else
-            System.out.println("Logovan je: " + korisnik.getIme());
+            System.out.println("Logovan je: " + dao.getUser().getIme());
     }
 
 }
