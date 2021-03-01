@@ -27,6 +27,7 @@ public class GlavnaController implements Initializable {
     public Button adminBtn;
     public Button logoutBtn;
     public Button loginBtn;
+    public Button kategorijeBtn;
 
     private KuharDAO dao;
     private ArrayList<Recept> recepti;
@@ -75,6 +76,7 @@ public class GlavnaController implements Initializable {
             ugasiDugme(logoutBtn);
             ugasiDugme(dodajReceptBtn);
             ugasiDugme(urediReceptBtn);
+            ugasiDugme(kategorijeBtn);
         }
         else if (dao.getUser().isAdmin())
         {
@@ -83,6 +85,7 @@ public class GlavnaController implements Initializable {
             upaliDugme(logoutBtn);
             upaliDugme(dodajReceptBtn);
             upaliDugme(urediReceptBtn);
+            upaliDugme(kategorijeBtn);
         }
         else
         {
@@ -91,6 +94,7 @@ public class GlavnaController implements Initializable {
             upaliDugme(logoutBtn);
             upaliDugme(dodajReceptBtn);
             upaliDugme(urediReceptBtn);
+            ugasiDugme(kategorijeBtn);
         }
     }
 

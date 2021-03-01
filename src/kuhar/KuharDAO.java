@@ -27,7 +27,7 @@ public class KuharDAO {
     }
 
     private PreparedStatement sviKorisniciUpit, korisnikUpit, dodajKorisnikaUpit, urediKorisnikaUpitSLozinkom, urediKorisnikaUpitBezLozinke, posljednjiKorisnikUpit, provjeriUsernameUpit, izbrisiKorisnikaUpit;
-    private PreparedStatement sveKategorijeUpit, dajKategorijuUpit, dodajKategorijuUpit, urediKategorijuUpit, izbrisiKategorijuUpit;
+    private PreparedStatement sveKategorijeUpit, dajKategorijuUpit, dodajKategorijuUpit, urediKategorijuUpit, izbrisiKategorijuUpit, dajPosljednjiKategorijaIdUpit;
     public static KuharDAO getInstance() {
         if (instance == null) instance = new KuharDAO();
         return instance;
@@ -67,6 +67,7 @@ public class KuharDAO {
             dodajKategorijuUpit = conn.prepareStatement("INSERT INTO kategorije VALUES(?,?)");
             urediKategorijuUpit = conn.prepareStatement("UPDATE kategorije SET naziv=? WHERE id=?");
             izbrisiKategorijuUpit = conn.prepareStatement("DELETE FROM kategorije WHERE id=?");
+            dajPosljednjiKategorijaIdUpit = conn.prepareStatement("SELECT max(id) FROM kategorije");
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
@@ -278,7 +279,9 @@ public class KuharDAO {
         if (user == null)
             throw new NemateOvlastiIzuzetak();
         try {
-            dodajKategorijuUpit.setString(1,naziv);
+            int id = dajPosljednjiKategorijaIdUpit.executeQuery().getInt(1)+1;
+            dodajKategorijuUpit.setInt(1,id);
+            dodajKategorijuUpit.setString(2,naziv);
             dodajKategorijuUpit.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
