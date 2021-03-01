@@ -1,5 +1,6 @@
 package kuhar.kontroleri;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -23,7 +24,6 @@ public class GlavnaController implements Initializable {
     public TilePane sadrzaj;
     public ScrollPane scrolpane;
     public Button dodajReceptBtn;
-    public Button urediReceptBtn;
     public Button adminBtn;
     public Button logoutBtn;
     public Button loginBtn;
@@ -75,7 +75,6 @@ public class GlavnaController implements Initializable {
             ugasiDugme(adminBtn);
             ugasiDugme(logoutBtn);
             ugasiDugme(dodajReceptBtn);
-            ugasiDugme(urediReceptBtn);
             ugasiDugme(kategorijeBtn);
         }
         else if (dao.getUser().isAdmin())
@@ -84,7 +83,6 @@ public class GlavnaController implements Initializable {
             upaliDugme(adminBtn);
             upaliDugme(logoutBtn);
             upaliDugme(dodajReceptBtn);
-            upaliDugme(urediReceptBtn);
             upaliDugme(kategorijeBtn);
         }
         else
@@ -93,7 +91,6 @@ public class GlavnaController implements Initializable {
             ugasiDugme(adminBtn);
             upaliDugme(logoutBtn);
             upaliDugme(dodajReceptBtn);
-            upaliDugme(urediReceptBtn);
             ugasiDugme(kategorijeBtn);
         }
     }
@@ -119,4 +116,13 @@ public class GlavnaController implements Initializable {
         admin.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         admin.show();
     }
+
+    public void dodajRecept() throws IOException {
+        Stage recept = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/recept.fxml"));
+        recept.setTitle("Dodavanje recepta");
+        recept.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        recept.show();
+    }
+
 }

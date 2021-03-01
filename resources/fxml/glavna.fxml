@@ -44,12 +44,7 @@
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="dodajReceptBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Dodaj recept">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="urediReceptBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Uredi recept">
+            <Button fx:id="dodajReceptBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#dodajRecept" text="Dodaj recept">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
