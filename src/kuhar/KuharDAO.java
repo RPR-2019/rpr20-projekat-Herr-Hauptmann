@@ -95,7 +95,13 @@ public class KuharDAO {
                 }
             }
             ulaz.close();
-        } catch (FileNotFoundException e) {
+            dodajKorisnikaUpit.setInt(1,1);
+            dodajKorisnikaUpit.setString(2, "Administrator");
+            dodajKorisnikaUpit.setString(3, "admin");
+            dodajKorisnikaUpit.setString(4, hashFunkcija("admin"));
+            dodajKorisnikaUpit.setInt(5, 1);
+            dodajKorisnikaUpit.executeUpdate();
+        } catch (FileNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -232,5 +238,9 @@ public class KuharDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public void vratiBazuNaDefault() {
+        regenerisiBazu();
     }
 }

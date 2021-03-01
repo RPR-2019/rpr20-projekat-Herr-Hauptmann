@@ -1,0 +1,27 @@
+
+Q
+java:S1659"4Declare "posljednjiKorisnikUpit" on a separate line.(µñé‰8ä®¢×ş.
+i
+java:S2095Y"GUse try-with-resources or close this "Statement" in a "finally" clause.(ìï‡Àûÿÿÿÿ8â³ë®ş.
+V
+java:S1659"9Declare "urediKorisnikaUpitSLozinkom" on a separate line.(µñé‰8á‰ïÙş.
+O
+java:S1659"2Declare "izbrisiKorisnikaUpit" on a separate line.(µñé‰8ª‚ïÚş.
+>
+java:S1643V"Use a StringBuilder instead.(¥…ˆÇşÿÿÿÿ8—Ôë®ş.
+M
+java:S1659"0Declare "dodajKorisnikaUpit" on a separate line.(µñé‰8ÔŠ¢°ş.
+W
+java:S1141X"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8â³ë®ş.
+g
+java:S2095S"EUse try-with-resources or close this "Scanner" in a "finally" clause.(Ÿ¤’şıÿÿÿÿ8‹á³ìş.
+O
+java:S1659"2Declare "provjeriUsernameUpit" on a separate line.(µñé‰8×Ù…Øş.
+K
+java:S2115%")Add password protection to this database.(–Æƒƒüÿÿÿÿ8şœ–×ş.
+W
+java:S1659":Declare "urediKorisnikaUpitBezLozinke" on a separate line.(µñé‰8‡ÚòÚş.
+G
+java:S1659"*Declare "korisnikUpit" on a separate line.(µñé‰8æÖ¯ş.
+‘
+java:S1130ó"nRemove the declaration of thrown exception 'java.sql.SQLException', as it cannot be thrown from method's body.(ÍÛ¥üÿÿÿÿ8Ï†âíş.

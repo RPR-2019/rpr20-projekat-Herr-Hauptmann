@@ -1,4 +1,3 @@
-BEGIN TRANSACTION;
 DROP TABLE IF EXISTS "korisnici";
 CREATE TABLE IF NOT EXISTS "korisnici" (
 	"id"	INTEGER NOT NULL UNIQUE,
@@ -8,5 +7,3 @@ CREATE TABLE IF NOT EXISTS "korisnici" (
 	"admin"	INTEGER,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
-INSERT INTO "korisnici" ("id","ime","username","password","admin") VALUES (1,'Tarik Horozovic','horoz','password',0);
-COMMIT;
