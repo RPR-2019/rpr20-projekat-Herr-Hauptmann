@@ -10,9 +10,11 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kuhar.KuharDAO;
+import kuhar.modeli.Recept;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
@@ -27,6 +29,7 @@ public class GlavnaController implements Initializable {
     public Button loginBtn;
 
     private KuharDAO dao;
+    private ArrayList<Recept> recepti;
 
     public GlavnaController()
     {
@@ -98,5 +101,10 @@ public class GlavnaController implements Initializable {
     private void ugasiDugme(Button dugme) {
         dugme.setVisible(false);
         dugme.setManaged(false);
+    }
+
+    public void otvoriRecept()
+    {
+        System.out.println("Klik!");
     }
 }

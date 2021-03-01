@@ -19,8 +19,6 @@ Y
 )src/kuhar/kontroleri/LoginController.java,7\c\7c8001bcdcedcadad184346bb9888b13006b7b4b
 N
 src/kuhar/modeli/Korisnik.java,e\4\e45cf5ab181d30a5c49439842ad2eafb2b3e3c14
-J
-resources/fxml/glavna.fxml,e\5\e5ad589375e0d2e7aac475d60e673e35e13b3a14
 Z
 *src/kuhar/kontroleri/GlavnaController.java,7\3\73b736d9d600a3347c16ba6a14fa8587cac18a91
 L

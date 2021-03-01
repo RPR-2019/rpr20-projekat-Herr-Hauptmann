@@ -1,6 +1,7 @@
 package kuhar;
 
 import kuhar.izuzeci.NemateOvlastiIzuzetak;
+import kuhar.modeli.Kategorija;
 import kuhar.modeli.Korisnik;
 
 import java.io.FileInputStream;
@@ -26,7 +27,7 @@ public class KuharDAO {
     }
 
     private PreparedStatement sviKorisniciUpit, korisnikUpit, dodajKorisnikaUpit, urediKorisnikaUpitSLozinkom, urediKorisnikaUpitBezLozinke, posljednjiKorisnikUpit, provjeriUsernameUpit, izbrisiKorisnikaUpit;
-
+    private PreparedStatement sveKategorijeUpit, dajKategorijuUpit, dodajKategorijuUpit, urediKategorijuUpit, izbrisiKategorijuUpit;
     public static KuharDAO getInstance() {
         if (instance == null) instance = new KuharDAO();
         return instance;
@@ -51,6 +52,7 @@ public class KuharDAO {
         }
 
         try {
+            //Upiti vezani za korisnike
             korisnikUpit = conn.prepareStatement("SELECT * FROM korisnici WHERE username=? AND password=?");
             dodajKorisnikaUpit = conn.prepareStatement("INSERT into korisnici VALUES(?,?,?,?,?)");
             urediKorisnikaUpitSLozinkom = conn.prepareStatement("UPDATE korisnici SET ime=?, username=?, password=?, admin=? WHERE id=?");
@@ -58,6 +60,13 @@ public class KuharDAO {
             provjeriUsernameUpit = conn.prepareStatement("SELECT * FROM korisnici WHERE username=?");
             urediKorisnikaUpitBezLozinke = conn.prepareStatement("UPDATE korisnici SET ime=?, username=?, admin=? WHERE id=?");
             izbrisiKorisnikaUpit = conn.prepareStatement("DELETE FROM korisnici WHERE id=?");
+
+            //Upiti vezani za kategorije
+            sveKategorijeUpit = conn.prepareStatement("SELECT * FROM kategorije");
+            dajKategorijuUpit = conn.prepareStatement("SELECT naziv FROM kategorije WHERE id=?");
+            dodajKategorijuUpit = conn.prepareStatement("INSERT INTO kategorije VALUES(?,?)");
+            urediKategorijuUpit = conn.prepareStatement("UPDATE kategorije SET naziv=? WHERE id=?");
+            izbrisiKategorijuUpit = conn.prepareStatement("DELETE FROM kategorije WHERE id=?");
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
@@ -242,5 +251,68 @@ public class KuharDAO {
 
     public void vratiBazuNaDefault() {
         regenerisiBazu();
+    }
+
+    public List<Kategorija> kategorije(){
+        ArrayList<Kategorija> kategorije = new ArrayList<>();
+        try {
+            ResultSet rs = sveKategorijeUpit.executeQuery();
+            while (rs.next()){
+                Kategorija kategorija = new Kategorija(rs.getInt(1), rs.getString(2));
+                kategorije.add(kategorija);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return kategorije;
+    }
+
+    public String dajKategoriju(int id)
+    {
+        try {
+            dajKategorijuUpit.setInt(1, id);
+            ResultSet rs = dajKategorijuUpit.executeQuery();
+            if (rs.next())
+                return rs.getString(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    public void dodajKategoriju(String naziv) {
+        if (user == null)
+            throw new NemateOvlastiIzuzetak();
+        try {
+            dodajKategorijuUpit.setString(1,naziv);
+            dodajKategorijuUpit.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public void urediKategoriju(int id, String naziv) {
+        if (user == null)
+            throw new NemateOvlastiIzuzetak();
+        try {
+            urediKategorijuUpit.setString(1,naziv);
+            urediKategorijuUpit.setInt(2, id);
+            urediKategorijuUpit.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void izbrisiKategoriju(int id)
+    {
+        if (user == null)
+            throw new NemateOvlastiIzuzetak();
+        try {
+            izbrisiKategorijuUpit.setInt(1, id);
+            izbrisiKategorijuUpit.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

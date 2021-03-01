@@ -6,7 +6,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 import kuhar.KuharDAO;
-import kuhar.kontroleri.LoginController;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -15,11 +14,8 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
-import java.sql.SQLException;
-
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(ApplicationExtension.class)
@@ -35,8 +31,21 @@ public class LoginControllerTest {
         dao.vratiBazuNaDefault();
     }
 
+    @Test
+    public void zatvoriProzor(FxRobot robot)
+    {
+        robot.clickOn("#usernameField");
+        robot.write("admin");
+        robot.clickOn("#passwordField");
+        robot.write("admin");
+        robot.clickOn("#cancelBtn");
+
+        assertNull(dao.getUser());
+    }
+
     @Start
     public void start(Stage stage) throws Exception {
+        KuharDAO.removeInstance();
         dao = KuharDAO.getInstance();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         Parent root = loader.load();
@@ -122,7 +131,4 @@ public class LoginControllerTest {
 
         assertEquals("Administrator", dao.getUser().getIme());
     }
-
-
-
 }

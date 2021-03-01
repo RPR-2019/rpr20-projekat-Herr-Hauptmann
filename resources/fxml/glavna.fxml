@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -18,31 +20,19 @@
          <content>
             <TilePane fx:id="sadrzaj" alignment="CENTER" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" prefColumns="3" prefRows="10" prefTileHeight="300.0" prefTileWidth="400.0" vgap="10.0">
                <children>
-                  <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/grah.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/grah.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/grah.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/grah.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/sataras.jpg" />
-                     </image>
-                  </ImageView>
+                  <VBox alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" TilePane.alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="slika" fitHeight="300.0" fitWidth="400.0" onMouseClicked="#otvoriRecept" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/grah.jpg" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <Label text="NazivSlike" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
