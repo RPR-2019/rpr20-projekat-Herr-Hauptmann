@@ -54,11 +54,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="adminBtn" mnemonicParsing="false" onAction="#otvoriAdminKonzolu" text="Admin konzola">
+            <Button fx:id="adminBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#otvoriAdminKonzolu" text="Upravljanje korisnicima">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#otvoriKategorije" text="Upravljanje kategorijama" />
             <Button fx:id="logoutBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logout" text="Log out">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

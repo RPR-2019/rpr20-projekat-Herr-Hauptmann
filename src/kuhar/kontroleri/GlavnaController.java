@@ -107,4 +107,12 @@ public class GlavnaController implements Initializable {
     {
         System.out.println("Klik!");
     }
+
+    public void otvoriKategorije() throws IOException {
+        Stage admin = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/pregled_kategorija.fxml"));
+        admin.setTitle("Kategorije");
+        admin.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        admin.show();
+    }
 }
