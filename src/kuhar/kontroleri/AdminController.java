@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import kuhar.KuharDAO;
+import kuhar.izuzeci.NemateOvlastiIzuzetak;
 import kuhar.modeli.Korisnik;
 
 import java.io.IOException;
@@ -87,7 +88,17 @@ public class AdminController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            dao.izbrisiKorisnika(korisnik.getId());
+            try{
+                dao.izbrisiKorisnika(korisnik.getId());
+            }catch(NemateOvlastiIzuzetak e)
+            {
+                Alert alarm = new Alert(Alert.AlertType.ERROR);
+                alarm.setTitle("Greška pri brisanju korisnika");
+                alarm.setHeaderText(e.getMessage());
+                alarm.setContentText("Pokušajte ponovno :(");
+                alarm.showAndWait();
+            }
+
             listaKorisnika.setAll(dao.korisnici());
         }
     }

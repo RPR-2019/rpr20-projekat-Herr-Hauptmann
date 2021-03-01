@@ -224,6 +224,8 @@ public class KuharDAO {
 
     public void izbrisiKorisnika(int id)
     {
+        if (user == null)
+            throw new NemateOvlastiIzuzetak();
         try{
             izbrisiKorisnikaUpit.setInt(1, id);
             izbrisiKorisnikaUpit.executeUpdate();
