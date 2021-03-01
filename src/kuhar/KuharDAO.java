@@ -1,9 +1,12 @@
 package kuhar;
 
+import kuhar.izuzeci.NemateOvlastiIzuzetak;
 import kuhar.modeli.Korisnik;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +25,7 @@ public class KuharDAO {
         this.user = user;
     }
 
-    private PreparedStatement testniUpit, korisnikUpit, dodajKorisnikaUpit;
+    private PreparedStatement sviKorisniciUpit, korisnikUpit, dodajKorisnikaUpit, urediKorisnikaUpitSLozinkom, urediKorisnikaUpitBezLozinke, posljednjiKorisnikUpit, provjeriUsernameUpit, izbrisiKorisnikaUpit;
 
     public static KuharDAO getInstance() {
         if (instance == null) instance = new KuharDAO();
@@ -37,11 +40,11 @@ public class KuharDAO {
         }
 
         try {
-            testniUpit = conn.prepareStatement("SELECT * FROM korisnici");
+            sviKorisniciUpit = conn.prepareStatement("SELECT * FROM korisnici");
         } catch (SQLException e) {
             regenerisiBazu();
             try {
-                testniUpit = conn.prepareStatement("SELECT * FROM korisnici");
+                sviKorisniciUpit = conn.prepareStatement("SELECT * FROM korisnici");
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
@@ -50,6 +53,11 @@ public class KuharDAO {
         try {
             korisnikUpit = conn.prepareStatement("SELECT * FROM korisnici WHERE username=? AND password=?");
             dodajKorisnikaUpit = conn.prepareStatement("INSERT into korisnici VALUES(?,?,?,?,?)");
+            urediKorisnikaUpitSLozinkom = conn.prepareStatement("UPDATE korisnici SET ime=?, username=?, password=?, admin=? WHERE id=?");
+            posljednjiKorisnikUpit = conn.prepareStatement("SELECT max(id) FROM korisnici");
+            provjeriUsernameUpit = conn.prepareStatement("SELECT * FROM korisnici WHERE username=?");
+            urediKorisnikaUpitBezLozinke = conn.prepareStatement("UPDATE korisnici SET ime=?, username=?, admin=? WHERE id=?");
+            izbrisiKorisnikaUpit = conn.prepareStatement("DELETE FROM korisnici WHERE id=?");
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
@@ -92,14 +100,41 @@ public class KuharDAO {
         }
     }
 
-    public void dodajKorisnika(String username)
+    private String hashFunkcija(String password)
     {
+        String generatedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return generatedPassword;
+    }
+
+    public void dodajKorisnika(String ime, String username, String password, boolean admin)
+    {
+        if (user == null)
+            throw new NemateOvlastiIzuzetak();
         try{
-            dodajKorisnikaUpit.setInt(1, 2);
-            dodajKorisnikaUpit.setString(2,"Test");
+            int id = posljednjiKorisnikUpit.executeQuery().getInt(1)+1;
+            dodajKorisnikaUpit.setInt(1, id);
+            dodajKorisnikaUpit.setString(2,ime);
             dodajKorisnikaUpit.setString(3,username);
-            dodajKorisnikaUpit.setString(4,"Test");
-            dodajKorisnikaUpit.setInt(5, 0);
+            dodajKorisnikaUpit.setString(4,hashFunkcija(password));
+            if (admin)
+                dodajKorisnikaUpit.setInt(5, 1);
+            else
+                dodajKorisnikaUpit.setInt(5, 0);
             dodajKorisnikaUpit.executeUpdate();
         }
         catch (SQLException e) {
@@ -110,7 +145,7 @@ public class KuharDAO {
     public Korisnik dajKorisnika(String username, String password) {
         try {
             korisnikUpit.setString(1, username);
-            korisnikUpit.setString(2, password);
+            korisnikUpit.setString(2, hashFunkcija(password));
             ResultSet rs = korisnikUpit.executeQuery();
             if (!rs.next())
             {
@@ -126,7 +161,74 @@ public class KuharDAO {
     public List<Korisnik> korisnici()
     {
         ArrayList<Korisnik> korisnici = new ArrayList<>();
-
+        try {
+            ResultSet rs = sviKorisniciUpit.executeQuery();
+            while (rs.next()){
+                Korisnik korisnik = new Korisnik(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBoolean(5));
+                korisnici.add(korisnik);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return korisnici;
+    }
+
+    public boolean provjeriUsername(String username) {
+        try {
+            provjeriUsernameUpit.setString(1, username);
+            ResultSet rs = provjeriUsernameUpit.executeQuery();
+            return rs.next();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
+    public void urediKorisnika(int id, String ime, String username, String password, boolean admin)
+    {
+        if (user == null)
+            throw new NemateOvlastiIzuzetak();
+        try {
+            urediKorisnikaUpitSLozinkom.setString(1, ime);
+            urediKorisnikaUpitSLozinkom.setString(2, username);
+            urediKorisnikaUpitSLozinkom.setString(3, hashFunkcija(password));
+            if (admin)
+                urediKorisnikaUpitSLozinkom.setInt(4, 1);
+            else
+                urediKorisnikaUpitSLozinkom.setInt(4, 0);
+            urediKorisnikaUpitSLozinkom.setInt(5, id);
+            urediKorisnikaUpitSLozinkom.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void urediKorisnika(int id, String ime, String username, boolean admin)
+    {
+        if (user == null)
+            throw new NemateOvlastiIzuzetak();
+        try {
+            urediKorisnikaUpitBezLozinke.setString(1, ime);
+            urediKorisnikaUpitBezLozinke.setString(2, username);
+            if (admin)
+                urediKorisnikaUpitBezLozinke.setInt(3, 1);
+            else
+                urediKorisnikaUpitBezLozinke.setInt(3, 0);
+            urediKorisnikaUpitBezLozinke.setInt(4, id);
+            urediKorisnikaUpitBezLozinke.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void izbrisiKorisnika(int id)
+    {
+        try{
+            izbrisiKorisnikaUpit.setInt(1, id);
+            izbrisiKorisnikaUpit.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

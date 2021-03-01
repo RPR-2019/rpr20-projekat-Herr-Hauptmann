@@ -10,22 +10,21 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kuhar.kontroleri.AdminController">
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Dodaj korisnika">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#dodajKorisnika" text="Dodaj korisnika">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Uredi korisnika">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#urediKorisnika" text="Uredi korisnika">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Izbrisi korisnika">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#izbrisiKorisnika" text="Izbrisi korisnika">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
@@ -36,10 +35,10 @@
    <center>
       <TableView fx:id="korisniciTabela" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="idKolona" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="id" />
-          <TableColumn fx:id="imeKolona" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Ime i prezime" />
-            <TableColumn fx:id="usernameKolona" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Username" />
-            <TableColumn fx:id="adminKolona" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Admin" />
+          <TableColumn fx:id="idKolona" maxWidth="-1.0" minWidth="50.0" prefWidth="100.0" text="id" />
+          <TableColumn fx:id="imeKolona" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="-1.0" text="Ime i prezime" />
+            <TableColumn fx:id="usernameKolona" maxWidth="-1.0" minWidth="150.0" prefWidth="-1.0" text="Username" />
+            <TableColumn fx:id="adminKolona" maxWidth="-1.0" minWidth="50.0" prefWidth="-1.0" text="Admin" />
         </columns>
       </TableView>
    </center>

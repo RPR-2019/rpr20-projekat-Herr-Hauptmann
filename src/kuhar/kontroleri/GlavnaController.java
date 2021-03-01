@@ -40,11 +40,11 @@ public class GlavnaController implements Initializable {
     }
 
     public void otvoriAdminKonzolu() throws IOException {
-        Stage login = new Stage();
+        Stage admin = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin.fxml"));
-        login.setTitle("Admin");
-        login.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        login.show();
+        admin.setTitle("Admin");
+        admin.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        admin.show();
     }
 
     public void otvoriLogin() throws IOException {
