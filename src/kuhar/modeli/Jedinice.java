@@ -11,8 +11,8 @@ public enum Jedinice {
     komad,
     pakovanje;
 
-    private final String[] jedinice = {"kg", "gr", "dl", "ml", "l", "komad", "pakovanje"};
-    String getJedinica(int i) {
+    private static final String[] jedinice = {"kg", "gr", "dl", "ml", "l", "komad", "pakovanje"};
+    static String getJedinica(int i) {
         if (i < 0 || i > 7)
             throw new PogresnaJedinica();
         return jedinice[i];

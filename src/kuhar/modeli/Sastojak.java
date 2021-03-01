@@ -26,6 +26,6 @@ public abstract class Sastojak {
     }
 
     public abstract String getJedinica();
-    public abstract void setJedinica();
+    public abstract void setJedinica(String jedinica);
 
 }

@@ -29,7 +29,5 @@ L
 ,src/kuhar/kontroleri/KorisnikController.java,3\3\33644ea50e12e9c090d79c6e364ed1173862d6ce
 Y
 )src/kuhar/kontroleri/AdminController.java,8\a\8af38bd9443ea32bc1bc8da463399b3905a929a3
-I
-resources/fxml/admin.fxml,3\7\379b40190a6a9efe76dd3498e836c309df2557e2
 M
 test/LoginControllerTest.java,d\a\da68702062aa20c1744e5f56faaf35dc637d5250

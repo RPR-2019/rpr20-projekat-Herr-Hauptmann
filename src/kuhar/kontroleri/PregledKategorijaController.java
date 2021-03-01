@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import kuhar.KuharDAO;
 import kuhar.izuzeci.NemateOvlastiIzuzetak;
 import kuhar.modeli.Kategorija;
-import kuhar.modeli.Korisnik;
 
 import java.io.IOException;
 import java.net.URL;
